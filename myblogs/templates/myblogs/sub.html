@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        body {
+            background: linear-gradient(to left,#30cfd0,#330867);
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.25); /* Adjust border for contrast */
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); /* Adjust shadow for depth */
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #dc3545;
+        }
+
+        .form-label {
+            color: #495057;
+        }
+
+        .form-control {
+            border: 1px solid #ced4da;
+        }
+
+        .btn-primary {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+
+        .btn-primary:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+
+        /* Custom style for the image */
+        .subscription-image {
+            width: 100%; /* Ensure the image fills its container */
+            border-radius: 10px; /* Rounded corners for the image */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Box shadow for a subtle lift */
+        }
+    </style>
+</head>
+<body>
+    {% include 'myblogs/navbar.html' %}
+    <div class="container">
+        <div class="row">
+            <!-- Left column for the image -->
+            <div class="col-md-6">
+                <img src="https://static.vecteezy.com/system/resources/previews/003/519/381/original/email-service-concept-isolated-sending-and-receiving-letters-notification-mailing-people-scene-in-flat-cartoon-design-illustration-for-blogging-website-mobile-app-promotional-materials-vector.jpg" alt="Subscription Image" class="subscription-image">
+            </div>
+            <!-- Right column for the subscription form -->
+            <div class="col-md-6">
+                <h1 class="container">Subscribe for Latest Contents</h1>
+                {% if feedback %}
+                <h1 class="alert alert-success mt-2">{{ feedback }}</h1>
+                {% endif %}
+
+                <form method="post" action="">
+                    {% csrf_token %}
+
+                    <div class="mb-3">
+                        <label for="use_email" class="form-label mt-4">Email address</label>
+                        <input type="email" class="form-control" id="use_email" name="use_email" maxlength="100" aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mt-4">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

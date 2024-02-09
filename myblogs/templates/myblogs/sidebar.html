@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMMENT</title>
+</head>
+<body>
+    <div class="comment-sidebar">
+        <h3>Recent Comments</h3>
+        <ul>
+            {% for comment in recent_comments %}
+                <li>{{ comment.name }} on <a href="{{ comment.post.get_absolute_url }}">{{ comment.post.title }}</a></li>
+            {% endfor %}
+        </ul>
+        <h3>Popular Comments</h3>
+        <ul>
+            {% for comment in popular_comments %}
+                <li>{{ comment.name }} on <a href="{{ comment.post.get_absolute_url }}">{{ comment.post.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+    
+</body>
+</html>
